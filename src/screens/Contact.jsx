@@ -7,6 +7,7 @@ import {
   AiFillTwitterSquare,
 } from "react-icons/ai";
 import { FiPhone } from "react-icons/fi";
+import { CiLocationOn } from "react-icons/ci";
 import { HiOutlineMail } from "react-icons/hi";
 
 const Contact = () => {
@@ -27,9 +28,9 @@ const Contact = () => {
         </div>
         <div className="bottom">
           <div className="left">
-            <header>
+            {/* <header>
               <img src={logo} alt="Tekorse" />
-            </header>
+            </header> */}
             <div className="social">
               <a
                 href="https://twitter.com/tekorse"
@@ -68,8 +69,13 @@ const Contact = () => {
             </p>
           </div>
           <div className="address">
-            <header>Address</header>
-            <p>Hyderabad, India</p>
+            {/* <header>Address</header> */}
+            <header>
+              <img src={logo} alt="Tekorse" />
+            </header>
+            <p>
+              <CiLocationOn size={20} /> Hyderabad, India
+            </p>
           </div>
         </div>
       </div>
@@ -138,8 +144,8 @@ const ContactContainer = styled.div`
         row-gap: 1.2rem;
         color: #bfbfbf;
         header {
-          font-size: 50px;
-          font-weight: 500;
+          /* font-size: 50px;
+          font-weight: 500; */
         }
         .social {
           display: flex;
@@ -177,7 +183,10 @@ const ContactContainer = styled.div`
           font-weight: 500;
         }
         p {
-          text-align: end;
+          font-size: 14px;
+          display: flex;
+          align-items: center;
+          column-gap: 0.7rem;
         }
       }
     }
