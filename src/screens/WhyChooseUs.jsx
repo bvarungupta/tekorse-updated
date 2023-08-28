@@ -9,7 +9,6 @@ const WhyChooseUs = () => {
       <div className="container">
         <div className="header">
           <header>Why Choose Us</header>
-          <p>Our market traction</p>
         </div>
         <div className="content">
           {statsData.map(({ title, imgSrc }, id) => (

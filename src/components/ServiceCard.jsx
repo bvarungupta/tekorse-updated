@@ -19,7 +19,6 @@ const ServiceCardContainer = styled.div`
   align-items: center;
   width: 300px;
   height: 300px;
-
   img {
     height: 100px;
   }
@@ -29,7 +28,8 @@ const ServiceCardContainer = styled.div`
     color: #e5e1e1;
   }
   p {
-    width: 70%;
+    width: 210px;
+    height: 90px;
     font-size: small;
     text-align: center;
     color: #bfbfbf;

@@ -6,10 +6,10 @@ import aboutUs from "../assets/about_us.png";
 const AboutUs = () => {
   return (
     <AboutUsContainer id="about">
+      <header>
+        Who We Are <img src={illusSvg} alt="" />
+      </header>
       <div className="main">
-        <header>
-          Who We Are <img src={illusSvg} alt="" />
-        </header>
         <div className="text-container">
           <p>
             Tekorse Technologies is a leading provider of custom software
@@ -22,9 +22,9 @@ const AboutUs = () => {
             professionals we come up with cool and important concepts , we will
             help your business reach a new level.
           </p>
-          <div className="img-container">
-            <img src={aboutUs} alt="" />
-          </div>
+        </div>
+        <div className="img-container">
+          <img src={aboutUs} alt="" />
         </div>
       </div>
     </AboutUsContainer>
@@ -34,6 +34,12 @@ const AboutUs = () => {
 export default AboutUs;
 
 const AboutUsContainer = styled.div`
+  .main {
+    display: flex;
+    header {
+      font-weight: 600;
+    }
+  }
   overflow-x: hidden;
   z-index: 10;
   height: 100vh;
@@ -42,7 +48,7 @@ const AboutUsContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  row-gap: 5rem;
+  row-gap: 2rem;
   header {
     margin-top: 5rem;
     margin-left: 10rem;
@@ -58,22 +64,28 @@ const AboutUsContainer = styled.div`
     }
   }
   .text-container {
+    /* background-color: red; */
     display: flex;
     justify-content: space-evenly;
-    margin-top: 7rem;
+    flex-direction: column;
+    align-items: center;
     p {
-      width: 15%;
+      /* background-color: pink; */
+      width: 65%;
       color: #fff;
       font-size: 16px;
       font-style: normal;
       font-weight: 300;
       line-height: normal;
     }
-    .img-container {
-      width: 30%;
-      img {
-        width: 100%;
-      }
+  }
+  .img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    img {
+      width: 400px;
     }
   }
   @media screen and (max-width: 1024px) {
@@ -85,20 +97,23 @@ const AboutUsContainer = styled.div`
       }
     }
     .text-container {
-      flex-direction: row;
+      flex-direction: column;
       p {
-        width: 15%;
+        width: 60%;
         font-size: 14px;
       }
-      .img-container {
-        width: 30%;
-        img {
-          width: 100%;
-        }
+    }
+    .img-container {
+      img {
+        width: 300px;
       }
     }
   }
   @media screen and (max-width: 768px) {
+    header {
+      margin-left: 0;
+      text-align: center;
+    }
     .main {
       display: flex;
       flex-direction: column;
@@ -120,11 +135,12 @@ const AboutUsContainer = styled.div`
         font-size: 14px;
         text-align: center;
       }
-      .img-container {
-        width: 50%;
-        img {
-          width: 100%;
-        }
+    }
+    .img-container {
+      /* margin-top: 2rem; */
+      width: 50%;
+      img {
+        width: 100%;
       }
     }
     @media screen and (max-width: 500px) {
@@ -134,14 +150,22 @@ const AboutUsContainer = styled.div`
         justify-content: center;
         align-items: center;
         row-gap: 3rem;
-        header {
-          text-align: center;
-        }
+
         .text-container {
           p {
             width: 80%;
           }
         }
+      }
+      .img-container {
+        margin-bottom: 3rem;
+        img {
+          width: 200px;
+        }
+      }
+      header {
+        text-align: center;
+        margin-top: 5rem;
       }
     }
   }

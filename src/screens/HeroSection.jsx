@@ -25,10 +25,6 @@ const HeroSection = () => {
     speed: 1,
     translateX: [0, 100],
   });
-  // const parallaxDoodle = useParallax({
-  //   speed: -10,
-  //   scale: [1, 0.2],
-  // });
 
   return (
     <HeroContainer id="home" className="">
@@ -44,15 +40,10 @@ const HeroSection = () => {
         Where Tech Imagination <br /> Meets Practical <br />{" "}
         <span>Innovation</span>
       </header>
-      <img
-        className="doodle-line"
-        // ref={parallaxDoodle.ref}
-        src={doodle}
-        alt="img"
-      ></img>
+      <img className="doodle-line" src={doodle} alt="img"></img>
       <div className="btn-container">
         <button className="">
-          <a href="#contact">Let's Talk</a>
+          <a href="#contact">Explore</a>
         </button>
         <div className="over-laver"></div>
       </div>

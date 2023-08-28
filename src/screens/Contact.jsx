@@ -6,6 +6,7 @@ import {
   AiFillInstagram,
   AiFillTwitterSquare,
 } from "react-icons/ai";
+import { FiPhone } from "react-icons/fi";
 import { HiOutlineMail } from "react-icons/hi";
 
 const Contact = () => {
@@ -15,14 +16,14 @@ const Contact = () => {
       <div className="container">
         <div className="header-part">
           <header>Contact Us</header>
-          <p>
+          {/* <p>
             Get in touch with us today. Whether you have questions, ideas, or
             simply want to say hello, we're here to listen. Your feedback and
             inquiries matter to us, and we're committed to providing you with
             the support and information you need. Reach out via the contact form
             below, or connect with us through our social media channels. We look
             forward to hearing from you
-          </p>
+          </p> */}
         </div>
         <div className="bottom">
           <div className="left">
@@ -57,13 +58,18 @@ const Contact = () => {
                 <HiOutlineMail /> info@tekorse.com
               </a>
             </p>
+            <p className="phone">
+              <a href="#phone">
+                <FiPhone />
+                <span>
+                  +91 9032201605 <br /> +91 9848811239
+                </span>
+              </a>
+            </p>
           </div>
           <div className="address">
             <header>Address</header>
-            <p>
-              Hyderabad,
-              <br /> Telangana, India
-            </p>
+            <p>Hyderabad, India</p>
           </div>
         </div>
       </div>
@@ -129,7 +135,7 @@ const ContactContainer = styled.div`
       .left {
         display: flex;
         flex-direction: column;
-        row-gap: 2rem;
+        row-gap: 1.2rem;
         color: #bfbfbf;
         header {
           font-size: 50px;
@@ -143,10 +149,23 @@ const ContactContainer = styled.div`
             font-size: 30px;
           }
         }
-        .email {
+        .email,
+        .phone {
           display: flex;
           align-items: center;
-          gap: 1rem;
+          gap: 0.5rem;
+          a {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+          }
+        }
+        .phone {
+          a {
+            span {
+              font-size: 12px;
+            }
+          }
         }
       }
       .address {
