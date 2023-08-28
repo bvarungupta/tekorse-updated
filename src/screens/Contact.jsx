@@ -1,11 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import logo from "../assets/mainLogo.svg";
-import {
-  AiFillLinkedin,
-  AiFillInstagram,
-  AiFillTwitterSquare,
-} from "react-icons/ai";
+import { AiOutlineLinkedin, AiOutlineInstagram } from "react-icons/ai";
+import x_twitter from "../assets/twitter_x.svg";
 import { FiPhone } from "react-icons/fi";
 import { CiLocationOn } from "react-icons/ci";
 import { HiOutlineMail } from "react-icons/hi";
@@ -28,30 +25,28 @@ const Contact = () => {
         </div>
         <div className="bottom">
           <div className="left">
-            {/* <header>
-              <img src={logo} alt="Tekorse" />
-            </header> */}
             <div className="social">
               <a
                 href="https://twitter.com/tekorse"
                 target="_blank"
                 rel="noreferrer"
               >
-                <AiFillTwitterSquare className="icon" />
+                <img className="twitter" src={x_twitter} alt="twitter" />
+                {/* <AiFillTwitterSquare className="icon" /> */}
               </a>
               <a
                 href="https://www.instagram.com/tekorsetechnologies/"
                 target="_blank"
                 rel="noreferrer"
               >
-                <AiFillInstagram className="icon" />
+                <AiOutlineInstagram className="icon" />
               </a>
               <a
                 href="https://www.linkedin.com/company/tekorse-technologies/"
                 target="_blank"
                 rel="noreferrer"
               >
-                <AiFillLinkedin className="icon" />
+                <AiOutlineLinkedin className="icon" />
               </a>
             </div>
             <p className="email">
@@ -149,8 +144,16 @@ const ContactContainer = styled.div`
         }
         .social {
           display: flex;
+          align-items: center;
           justify-content: space-between;
           width: 50%;
+          a {
+            .twitter {
+              width: 22px;
+              height: 22px;
+              color: #bfbfbf;
+            }
+          }
           .icon {
             font-size: 30px;
           }
