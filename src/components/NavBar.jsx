@@ -2,13 +2,29 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import logo from "../assets/mainLogo.svg";
 import "../styles/btnStyles.css";
+import { darkModeColors, lightModeColors } from "../styles/colors";
 import { CgMenu, CgClose } from "react-icons/cg";
+import DarkModeToggle from "react-dark-mode-toggle";
+import { reducerCases } from "../context/Constants";
+import { useStateProvider } from "../context/StateProvider";
 
 const NavBar = () => {
   const [hamBurger, setHamBurger] = useState(false);
 
+  const [{ darkMode, dark_mode }, dispatch] = useStateProvider();
+
+  const toggleDarkMode = () => {
+    dispatch({
+      type: reducerCases.SET_DARK_MODE,
+      darkMode: !darkMode,
+    });
+    dispatch({
+      type: reducerCases.DARK_MODE,
+      dark_mode: dark_mode === "dark" ? "light" : "dark",
+    });
+  };
   return (
-    <NavContainer>
+    <NavContainer mode={dark_mode}>
       <div className="logo">
         <img src={logo} alt="Tekorse" />
       </div>
@@ -29,6 +45,12 @@ const NavBar = () => {
       <button className="letsTalk">
         <a href="#contact">Let's Talk</a>
       </button>
+      <DarkModeToggle
+        className="theme"
+        onChange={toggleDarkMode}
+        checked={darkMode}
+        size={65}
+      />
       {hamBurger ? (
         <CgClose
           className="ham-burger"
@@ -63,11 +85,19 @@ const NavBar = () => {
 export default NavBar;
 
 const NavContainer = styled.nav`
+  border-bottom: ${(props) =>
+    props.mode === "dark"
+      ? darkModeColors.secondary
+      : lightModeColors.secondary};
+  color: ${lightModeColors.text} 1px solid;
   position: sticky;
   top: 0;
   height: 105px;
-  background-color: #010100;
-  color: #fff;
+  background-color: ${(props) =>
+    props.mode === "dark"
+      ? darkModeColors.background
+      : lightModeColors.background};
+  color: ${lightModeColors.text};
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -75,7 +105,6 @@ const NavContainer = styled.nav`
   .logo {
     font-size: 2.2rem;
     font-weight: 700;
-    color: #fff;
   }
   .nav-items {
     display: flex;
@@ -86,11 +115,23 @@ const NavContainer = styled.nav`
       font-style: normal;
       font-weight: 500;
       line-height: normal;
+      a {
+        color: ${(props) =>
+          props.mode === "dark"
+            ? darkModeColors.text
+            : lightModeColors.text} !important;
+      }
     }
   }
-  button {
-    background-color: #4353ff;
-    color: #fff;
+  .letsTalk {
+    background-color: ${(props) =>
+      props.mode === "dark"
+        ? darkModeColors.primary
+        : lightModeColors.primary} !important;
+    color: ${(props) =>
+      props.mode === "dark"
+        ? darkModeColors.text
+        : lightModeColors.background} !important;
     width: 126px;
     height: 50px;
     flex-shrink: 0;
@@ -105,13 +146,16 @@ const NavContainer = styled.nav`
     transition: all 0.3s ease-in-out;
     a {
       text-decoration: none;
-      color: #fff;
+      color: ${(props) =>
+        props.mode === "dark"
+          ? darkModeColors.text
+          : lightModeColors.background} !important;
     }
 
     cursor: pointer;
     &:hover {
       background-color: rgba(67, 83, 255, 0.9);
-      color: #fff;
+      color: ${lightModeColors.text};
       transition: all 0.3s ease-in-out;
       box-shadow: 0px 0px 20px rgba(67, 83, 255, 0.5);
       z-index: 1;
@@ -119,6 +163,7 @@ const NavContainer = styled.nav`
   }
   .ham-burger {
     display: none;
+    color: ${lightModeColors.primary};
   }
   .mobile-nav {
     position: absolute;

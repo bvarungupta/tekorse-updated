@@ -1,24 +1,23 @@
 import React from "react";
 import ServiceCard from "../components/ServiceCard";
 import { servicesData } from "../utils/servicesCardData";
+import { colorCodes } from "../styles/colors";
+import { darkModeColors, lightModeColors } from "../styles/colors";
+import { useStateProvider } from "../context/StateProvider";
 import styled from "styled-components";
 
 const Services = () => {
+  const [{ dark_mode }] = useStateProvider();
+
   return (
-    <ServicesContainer id="services">
-      <div className="ellipse"></div>
+    <ServicesContainer mode={dark_mode} id="services">
+      {/* <div className="ellipse"></div> */}
       <div className="services-heading">
         <div className="header-left">
           <header>Our Services</header>
           <p>"The greatest ideas are the simplest." - William Golding</p>
         </div>
-        <div className="header-right">
-          <p>
-            We believe in Our team of experienced engineers and designers has a
-            proven track record of delivering high-quality software on time and
-            within budget.
-          </p>
-        </div>
+        <div className="header-right"></div>
       </div>
       <div className="services-list-container">
         {servicesData.map(({ title, imgSrc, description }, id) => (
@@ -40,9 +39,13 @@ const ServicesContainer = styled.div`
   overflow-x: hidden;
   z-index: 5;
   /* height: 100vh; */
-  background: #010100;
+  background: ${(props) =>
+    props.mode === "dark"
+      ? darkModeColors.background
+      : lightModeColors.background};
+
   width: 100%;
-  color: #fff;
+  font-weight: 300;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -74,8 +77,18 @@ const ServicesContainer = styled.div`
       align-items: center;
       width: 35%;
       header {
+        color: ${(props) =>
+          props.mode === "dark"
+            ? darkModeColors.accent
+            : lightModeColors.accent} !important;
         font-size: 60px;
-        font-weight: 400;
+        font-weight: 700;
+      }
+      p {
+        color: ${(props) =>
+          props.mode === "dark"
+            ? darkModeColors.text
+            : lightModeColors.text} !important;
       }
     }
     .header-right {

@@ -1,12 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import { useParallax } from "react-scroll-parallax";
-import whiteGlow from "../assets/white_glow.png";
 import doodle from "../assets/doodleLine.png";
 import specular from "../assets/specular.svg";
 import strip from "../assets/strip.svg";
-
+import { useStateProvider } from "../context/StateProvider";
+import { darkModeColors, lightModeColors } from "../styles/colors";
+import "../styles/downArrow.css";
 const HeroSection = () => {
+  const [{ dark_mode }] = useStateProvider();
+
   const parallaxSpecular = useParallax({
     speed: -10,
     style: {
@@ -27,7 +30,8 @@ const HeroSection = () => {
   });
 
   return (
-    <HeroContainer id="home" className="">
+    <HeroContainer mode={dark_mode} id="home" className="">
+      <div className="ellipse"></div>
       <img
         src={specular}
         ref={parallaxSpecular.ref}
@@ -35,17 +39,17 @@ const HeroSection = () => {
         alt=""
       />
       <img className="strip" ref={parallaxStrip.ref} src={strip} alt="" />
-      <img className="white-glow" src={whiteGlow} alt="" />
       <header ref={parallaxText.ref}>
         Where Tech Imagination <br /> Meets Practical <br />{" "}
         <span>Innovation</span>
       </header>
       <img className="doodle-line" src={doodle} alt="img"></img>
-      <div className="btn-container">
-        <button className="">
-          <a href="#contact">Explore</a>
-        </button>
-        <div className="over-laver"></div>
+      <div className="arrow-container">
+        <svg className="arrows">
+          <path class="a1" d="M0 0 L30 32 L60 0"></path>
+          <path class="a2" d="M0 20 L30 52 L60 20"></path>
+          <path class="a3" d="M0 40 L30 72 L60 40"></path>
+        </svg>
       </div>
       <div className="blue-shadow"></div>
     </HeroContainer>
@@ -60,12 +64,33 @@ const HeroContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 2rem;
-  background-color: #010100;
+  background-color: ${(props) =>
+    props.mode === "dark"
+      ? darkModeColors.background
+      : lightModeColors.background};
+  color: ${(props) =>
+    props.mode === "dark"
+      ? darkModeColors.text
+      : lightModeColors.text} !important;
   position: relative;
-  color: #fff;
   height: 100vh;
   row-gap: 1.5rem;
   z-index: 5;
+  .ellipse {
+    top: 0;
+    left: 0;
+    width: 411px;
+    height: 200px;
+    /* z-index: 5; */
+    position: absolute;
+    background: linear-gradient(
+      118deg,
+      rgba(0, 22, 255, 0.29) 32.83%,
+      rgba(26, 45, 255, 0) 175.21%,
+      rgba(69, 84, 239, 0.61) 175.21%
+    );
+    filter: blur(151px);
+  }
   .specular {
     position: absolute;
     left: -5rem;
@@ -86,20 +111,16 @@ const HeroContainer = styled.div`
     background: rgba(51, 67, 246, 0.38);
     filter: blur(192.5px);
   }
-  .white-glow {
-    top: -5rem;
-    left: -5rem;
-    width: 512px;
-    height: 249px;
-    position: absolute;
-    z-index: 5;
-  }
   header {
     text-align: center;
     font-size: 80px;
     font-style: normal;
     font-weight: 800;
     line-height: normal;
+    color: ${(props) =>
+      props.mode === "dark"
+        ? darkModeColors.text
+        : lightModeColors.text} !important;
     span {
       background: linear-gradient(308deg, #9278de 0%, #5238a9 100%);
       background-clip: text;
@@ -110,39 +131,9 @@ const HeroContainer = styled.div`
   .doodle-line {
     width: 515px;
     height: 59.016px;
+    /* color: #5238a9; */
   }
-  .btn-container {
-    position: relative;
-    button {
-      width: 170px;
-      height: 60px;
-      background-color: #4353ff;
-      font-size: larger;
-      font-weight: 500;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      a {
-        color: #fff;
-      }
-    }
 
-    .over-laver {
-      position: absolute;
-      bottom: -10px;
-      left: -10px;
-      width: 170px;
-      height: 60px;
-      border-radius: 10px;
-      border: 2px solid #4353ff;
-    }
-
-    .over-laver:hover {
-      bottom: 0;
-      left: 0;
-      transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
-    }
-  }
   /* media screens */
 
   @media screen and (max-width: 1024px) {
@@ -157,16 +148,6 @@ const HeroContainer = styled.div`
     .doodle-line {
       width: 40%;
       height: 20px;
-    }
-    .btn-container {
-      button {
-        width: 150px;
-        height: 50px;
-      }
-      .over-laver {
-        width: 150px;
-        height: 50px;
-      }
     }
   }
 
@@ -183,16 +164,6 @@ const HeroContainer = styled.div`
       width: 30%;
       height: 20px;
     }
-    .btn-container {
-      button {
-        width: 150px;
-        height: 50px;
-      }
-      .over-laver {
-        width: 150px;
-        height: 50px;
-      }
-    }
   }
   @media screen and (max-width: 426px) {
     .white-glow {
@@ -206,8 +177,6 @@ const HeroContainer = styled.div`
     .doodle-line {
       width: 30%;
       height: 20px;
-    }
-    .btn-container {
     }
     .strip {
       width: 60%;

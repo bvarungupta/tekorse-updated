@@ -2,10 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import illusSvg from "../assets/illus.svg";
 import aboutUs from "../assets/about_us.png";
+import { darkModeColors, lightModeColors } from "../styles/colors";
+import { useStateProvider } from "../context/StateProvider";
 
 const AboutUs = () => {
+  const [{ dark_mode }] = useStateProvider();
+
   return (
-    <AboutUsContainer id="about">
+    <AboutUsContainer mode={dark_mode} id="about">
       <header>
         Who We Are <img src={illusSvg} alt="" />
       </header>
@@ -43,7 +47,10 @@ const AboutUsContainer = styled.div`
   overflow-x: hidden;
   z-index: 10;
   height: 100vh;
-  background: #010100;
+  background: ${(props) =>
+    props.mode === "dark"
+      ? darkModeColors.background
+      : lightModeColors.background};
   width: 100%;
   display: flex;
   justify-content: center;
@@ -53,9 +60,13 @@ const AboutUsContainer = styled.div`
     margin-top: 5rem;
     margin-left: 10rem;
     position: relative;
-    color: #fff;
+    color: ${(props) =>
+      props.mode === "dark"
+        ? darkModeColors.accent
+        : lightModeColors.accent} !important;
+
     font-size: 60px;
-    font-weight: 400;
+    font-weight: 700;
     line-height: normal;
     letter-spacing: 2.85px;
     img {
@@ -64,15 +75,17 @@ const AboutUsContainer = styled.div`
     }
   }
   .text-container {
-    /* background-color: red; */
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
     align-items: center;
     p {
-      /* background-color: pink; */
       width: 65%;
-      color: #fff;
+      color: ${(props) =>
+        props.mode === "dark"
+          ? darkModeColors.text
+          : lightModeColors.text} !important;
+
       font-size: 16px;
       font-style: normal;
       font-weight: 300;

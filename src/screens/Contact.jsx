@@ -2,26 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import logo from "../assets/mainLogo.svg";
 import { AiOutlineLinkedin, AiOutlineInstagram } from "react-icons/ai";
-import x_twitter from "../assets/twitter_x.svg";
 import { FiPhone } from "react-icons/fi";
 import { CiLocationOn } from "react-icons/ci";
 import { HiOutlineMail } from "react-icons/hi";
+import { RiTwitterXFill } from "react-icons/ri";
+
 
 const Contact = () => {
   return (
     <ContactContainer id="contact">
-      <div className="ellipse"></div>
+      {/* <div className="ellipse"></div> */}
       <div className="container">
         <div className="header-part">
           <header>Contact Us</header>
-          {/* <p>
-            Get in touch with us today. Whether you have questions, ideas, or
-            simply want to say hello, we're here to listen. Your feedback and
-            inquiries matter to us, and we're committed to providing you with
-            the support and information you need. Reach out via the contact form
-            below, or connect with us through our social media channels. We look
-            forward to hearing from you
-          </p> */}
         </div>
         <div className="bottom">
           <div className="left">
@@ -31,8 +24,8 @@ const Contact = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img className="twitter" src={x_twitter} alt="twitter" />
-                {/* <AiFillTwitterSquare className="icon" /> */}
+                {/* <img className="twitter" src={x_twitter} alt="twitter" /> */}
+                <RiTwitterXFill className="icon" />
               </a>
               <a
                 href="https://www.instagram.com/tekorsetechnologies/"
@@ -147,17 +140,14 @@ const ContactContainer = styled.div`
           align-items: center;
           justify-content: space-between;
           width: 50%;
-          a {
-            .twitter {
-              width: 22px;
-              height: 22px;
-              color: #bfbfbf;
-            }
-          }
           .icon {
             font-size: 30px;
+            &:hover {
+              font-size: 33px;
+            }
           }
         }
+        
         .email,
         .phone {
           display: flex;
