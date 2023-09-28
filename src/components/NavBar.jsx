@@ -167,7 +167,10 @@ const NavContainer = styled.nav`
   }
   .mobile-nav {
     position: absolute;
-    background-color: #010100;
+    background-color: ${(props) =>
+      props.mode === "dark"
+        ? darkModeColors.background
+        : lightModeColors.background};
     top: 105px;
     left: 0;
     width: 100%;
@@ -180,11 +183,18 @@ const NavContainer = styled.nav`
     li {
       list-style: none;
       font-size: 20px;
-      border-bottom: 1px solid #fff;
+      border-bottom: 1px solid
+        ${(props) =>
+          props.mode === "dark"
+            ? darkModeColors.text
+            : lightModeColors.text} !important;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
-      color: #fff;
+      color: ${(props) =>
+        props.mode === "dark"
+          ? darkModeColors.text
+          : lightModeColors.text} !important;
     }
   }
   @media screen and (max-width: 1024px) {
@@ -192,6 +202,9 @@ const NavContainer = styled.nav`
       font-size: 2rem;
     }
     .nav-items {
+      display: none;
+    }
+    .letsTalk {
       display: none;
     }
     .ham-burger {

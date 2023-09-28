@@ -108,4 +108,7 @@ const SubNavbarContainer = styled.div`
       font-size: smaller;
     }
   }
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
