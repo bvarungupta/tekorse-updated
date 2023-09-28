@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import logo from "../assets/mainLogo.svg";
+import logo_ from "../assets/transparent_logo.svg";
+
 import "../styles/btnStyles.css";
 import { darkModeColors, lightModeColors } from "../styles/colors";
 import { CgMenu, CgClose } from "react-icons/cg";
@@ -26,7 +28,7 @@ const NavBar = () => {
   return (
     <NavContainer mode={dark_mode}>
       <div className="logo">
-        <img src={logo} alt="Tekorse" />
+        <img src={logo_} alt="Tekorse" />
       </div>
       <ul className="nav-items">
         <li>
@@ -103,7 +105,10 @@ const NavContainer = styled.nav`
   align-items: center;
   z-index: 20;
   .logo {
-    font-size: 2.2rem;
+    img {
+      width: 170px;
+    }
+
     font-weight: 700;
   }
   .nav-items {
