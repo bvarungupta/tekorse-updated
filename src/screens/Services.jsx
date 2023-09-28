@@ -1,7 +1,6 @@
 import React from "react";
 import ServiceCard from "../components/ServiceCard";
 import { servicesData } from "../utils/servicesCardData";
-import { colorCodes } from "../styles/colors";
 import { darkModeColors, lightModeColors } from "../styles/colors";
 import { useStateProvider } from "../context/StateProvider";
 import styled from "styled-components";

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import StatsCard from "../components/StatsCard";
-import { colorCodes } from "../styles/colors";
 import { statsData } from "../utils/StatsCardData";
 import { darkModeColors, lightModeColors } from "../styles/colors";
 import { useStateProvider } from "../context/StateProvider";
