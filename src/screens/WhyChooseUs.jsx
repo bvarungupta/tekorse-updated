@@ -1,12 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import StatsCard from "../components/StatsCard";
-import { statsData } from "../utils/StatsCardData";
+import {
+  statsData,
+  darkmodeDonuts,
+  lightmodeDonuts,
+} from "../utils/StatsCardData";
 import { darkModeColors, lightModeColors } from "../styles/colors";
 import { useStateProvider } from "../context/StateProvider";
 
 const WhyChooseUs = () => {
-  const [{ dark_mode }] = useStateProvider();
+  const [{ dark_mode, darkMode }] = useStateProvider();
   return (
     <WhyChooseUsContainer mode={dark_mode}>
       <div className="container">
@@ -14,9 +18,13 @@ const WhyChooseUs = () => {
           <header>Why Choose Us</header>
         </div>
         <div className="content">
-          {statsData.map(({ title, imgSrc }, id) => (
-            <StatsCard key={id} title={title} imgSrc={imgSrc} />
-          ))}
+          {darkMode
+            ? darkmodeDonuts.map(({ imgSrc, title }, id) => (
+                <StatsCard key={id} title={title} imgSrc={imgSrc} />
+              ))
+            : lightmodeDonuts.map(({ imgSrc, title }, id) => (
+                <StatsCard key={id} title={title} imgSrc={imgSrc} />
+              ))}
         </div>
       </div>
     </WhyChooseUsContainer>
