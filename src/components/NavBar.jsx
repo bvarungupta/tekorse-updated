@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import logo from "../assets/mainLogo.svg";
-import logo_ from "../assets/transparent_logo.svg";
-
+import logo from "../assets/transparent_logo.svg";
+import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
 import "../styles/btnStyles.css";
 import { darkModeColors, lightModeColors } from "../styles/colors";
 import { CgMenu, CgClose } from "react-icons/cg";
-import DarkModeToggle from "react-dark-mode-toggle";
 import { reducerCases } from "../context/Constants";
 import { useStateProvider } from "../context/StateProvider";
 
@@ -28,11 +26,14 @@ const NavBar = () => {
   return (
     <NavContainer mode={dark_mode}>
       <div className="logo">
-        <img src={logo_} alt="Tekorse" />
+        <img src={logo} alt="Tekorse" />
       </div>
       <ul className="nav-items">
         <li>
           <a href="#home">Home</a>
+        </li>
+        <li>
+          <a href="#blog">Blog</a>
         </li>
         <li>
           <a href="#services">Services</a>
@@ -44,15 +45,26 @@ const NavBar = () => {
           <a href="#contact">Contact</a>
         </li>
       </ul>
-      <button className="letsTalk">
-        <a href="#contact">Let's Talk</a>
-      </button>
-      <DarkModeToggle
-        className="theme"
-        onChange={toggleDarkMode}
-        checked={darkMode}
-        size={65}
-      />
+      <div className="btn-container">
+        <button className="letsTalk">
+          <a href="#contact">Let's Talk</a>
+        </button>
+        {/* <DarkModeToggle
+          className="theme"
+          onChange={toggleDarkMode}
+          checked={darkMode}
+          size={55}
+        /> */}
+        {darkMode ? (
+          <MdDarkMode className="theme hidden" onClick={toggleDarkMode} />
+        ) : (
+          <MdOutlineDarkMode
+            className="theme hidden"
+            onClick={toggleDarkMode}
+          />
+        )}
+      </div>
+
       {hamBurger ? (
         <CgClose
           className="ham-burger"
@@ -70,6 +82,9 @@ const NavBar = () => {
             <a href="#home">Home</a>
           </li>
           <li onClick={() => setHamBurger(!hamBurger)}>
+            <a href="#blog">Blog</a>
+          </li>
+          <li onClick={() => setHamBurger(!hamBurger)}>
             <a href="#services">Services</a>
           </li>
           <li onClick={() => setHamBurger(!hamBurger)}>
@@ -77,6 +92,25 @@ const NavBar = () => {
           </li>
           <li onClick={() => setHamBurger(!hamBurger)}>
             <a href="#contact">Contact</a>
+          </li>
+          <li
+            className="theme-container"
+            onClick={() => setHamBurger(!hamBurger)}
+          >
+            <button className="letstalk">
+              <a href="#contact">Let's Talk</a>
+            </button>
+            {/* <DarkModeToggle
+              className="theme"
+              onChange={toggleDarkMode}
+              checked={darkMode}
+              size={55}
+            /> */}
+            {darkMode ? (
+              <MdDarkMode className="theme" onClick={toggleDarkMode} />
+            ) : (
+              <MdOutlineDarkMode className="theme" onClick={toggleDarkMode} />
+            )}
           </li>
         </ul>
       )}
@@ -95,6 +129,11 @@ const NavContainer = styled.nav`
   position: sticky;
   top: 0;
   height: 105px;
+  box-shadow: ${(props) =>
+    props.mode === "dark"
+      ? "0px 4px 10px 0px rgba(16, 95, 216, 0.20)"
+      : "0px 4px 10px 0px #dedcff"} !important;
+  /* box-shadow: 0px 4px 67px 0px #dedcff; */
   background-color: ${(props) =>
     props.mode === "dark"
       ? darkModeColors.background
@@ -126,6 +165,19 @@ const NavContainer = styled.nav`
             ? darkModeColors.text
             : lightModeColors.text} !important;
       }
+    }
+  }
+  .btn-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    .theme {
+      color: ${(props) =>
+        props.mode === "dark"
+          ? darkModeColors.text
+          : lightModeColors.text} !important;
+      font-size: 2rem;
+      cursor: pointer;
     }
   }
   .letsTalk {
@@ -188,11 +240,6 @@ const NavContainer = styled.nav`
     li {
       list-style: none;
       font-size: 20px;
-      border-bottom: 1px solid
-        ${(props) =>
-          props.mode === "dark"
-            ? darkModeColors.text
-            : lightModeColors.text} !important;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
@@ -201,8 +248,36 @@ const NavContainer = styled.nav`
           ? darkModeColors.text
           : lightModeColors.text} !important;
     }
+    .theme-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      .letstalk {
+        border: none;
+        outline: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        background-color: ${(props) =>
+          props.mode === "dark"
+            ? darkModeColors.primary
+            : lightModeColors.primary} !important;
+        a {
+          font-family: "Plus Jakarta Sans", sans-serif;
+          color: ${(props) =>
+            props.mode === "dark"
+              ? darkModeColors.text
+              : lightModeColors.background} !important;
+        }
+      }
+      .theme {
+        cursor: pointer;
+      }
+    }
   }
   @media screen and (max-width: 1024px) {
+    .hidden {
+      display: none;
+    }
     .logo {
       font-size: 2rem;
     }

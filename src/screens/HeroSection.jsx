@@ -159,6 +159,10 @@ const HeroContainer = styled.div`
     header {
       font-size: 50px;
       margin-top: 2rem;
+      color: ${(props) =>
+        props.mode === "dark"
+          ? darkModeColors.text
+          : lightModeColors.primary} !important;
     }
     .doodle-line {
       width: 30%;

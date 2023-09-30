@@ -1,10 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import logo from "../assets/mainLogo.svg";
-import { AiOutlineLinkedin, AiOutlineInstagram } from "react-icons/ai";
-import { FiPhone } from "react-icons/fi";
-import { CiLocationOn } from "react-icons/ci";
-import { HiOutlineMail } from "react-icons/hi";
+import logo from "../assets/transparent_logo.svg";
+import { BiLogoLinkedin, BiLogoInstagramAlt } from "react-icons/bi";
 import { RiTwitterXFill } from "react-icons/ri";
 import { darkModeColors, lightModeColors } from "../styles/colors";
 import { useStateProvider } from "../context/StateProvider";
@@ -38,7 +35,55 @@ const Contact = () => {
           <button className="submit-btn">Submit</button>
         </div>
       </div>
-      <div className="contact-footer"></div>
+      <div className="contact-footer">
+        <div className="logo">
+          <img src={logo} alt="Tekorse" />
+        </div>
+        <div className="contact-info">
+          <div className="social">
+            <p>Follow us on </p>
+            <div className="social_icons">
+              <a
+                href="https://twitter.com/tekorse"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <RiTwitterXFill size={17} className="icon" />
+              </a>
+              <a
+                href="https://www.instagram.com/tekorsetechnologies/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <BiLogoInstagramAlt size={20} className="icon" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/tekorse-technologies/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <BiLogoLinkedin size={20} className="icon" />
+              </a>
+            </div>
+          </div>
+          <div className="address">
+            <span>Address</span>
+            <p>Hyderabad, India</p>
+          </div>
+          <div className="email">
+            <a href="mailto:info@tekorse.com">
+              <span>Mail us</span>
+              <p>info@tekorse.com</p>
+            </a>
+          </div>
+          <div className="phone">
+            <span>Phone </span>
+            <p>
+              +91 9032201605, <br /> +91 9848811239
+            </p>
+          </div>
+        </div>
+      </div>
     </ContactContainer>
   );
 };
@@ -138,10 +183,95 @@ const ContactContainer = styled.div`
     }
   }
   .contact-footer {
+    height: 35vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     background-color: ${(props) =>
       props.mode === "dark" ? darkModeColors.text : lightModeColors.text};
 
     width: 100%;
+    .logo {
+      img {
+        width: 170px;
+      }
+
+      font-weight: 700;
+    }
+    .contact-info {
+      display: flex;
+      gap: 3rem;
+      .social {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        p {
+          font-weight: 500;
+          font-size: larger;
+          color: ${(props) =>
+            props.mode === "dark"
+              ? darkModeColors.background
+              : lightModeColors.background} !important;
+        }
+        .social_icons {
+          display: flex;
+          gap: 0.5rem;
+          /* align-items: center; */
+          a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: ${(props) =>
+              props.mode === "dark"
+                ? darkModeColors.secondary
+                : lightModeColors.secondary};
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            .icon {
+              color: ${(props) =>
+                props.mode === "dark"
+                  ? darkModeColors.text
+                  : lightModeColors.text};
+            }
+          }
+        }
+      }
+      .address,
+      .phone {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .email {
+        a {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+      }
+      span {
+        font-size: larger;
+        font-weight: 500;
+        color: ${(props) =>
+          props.mode === "dark"
+            ? darkModeColors.background
+            : lightModeColors.background};
+      }
+      p {
+        font-size: smaller;
+        color: ${(props) =>
+          props.mode === "dark"
+            ? darkModeColors.secondary
+            : lightModeColors.secondary};
+      }
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    .contact-footer {
+      flex-direction: column;
+      row-gap: 2rem;
+    }
   }
 
   @media screen and (max-width: 768px) {
@@ -163,6 +293,23 @@ const ContactContainer = styled.div`
       }
       .right {
         width: 100%;
+      }
+    }
+    .contact-footer {
+      padding-block: 2rem;
+      height: max-content;
+      .contact-info {
+        flex-direction: column;
+        .social {
+          .social_icons {
+            justify-content: center;
+          }
+        }
+        .address,
+        .email,
+        .phone {
+          text-align: center;
+        }
       }
     }
   }
@@ -187,6 +334,13 @@ const ContactContainer = styled.div`
             input {
               width: 100%;
             }
+          }
+        }
+      }
+      .contact-footer {
+        .logo {
+          img {
+            width: 150px;
           }
         }
       }

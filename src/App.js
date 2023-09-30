@@ -8,6 +8,7 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import Services from "./screens/Services";
 import Contact from "./screens/Contact";
 import SubNavbar from "./components/SubNavbar";
+import Blog from "./screens/Blog";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <SubNavbar />
       <NavBar />
       <HeroSection />
+      <Blog />
       <AboutUs />
       <Services />
       <WhyChooseUs />
