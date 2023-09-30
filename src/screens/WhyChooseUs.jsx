@@ -34,7 +34,6 @@ const WhyChooseUs = () => {
 export default WhyChooseUs;
 
 const WhyChooseUsContainer = styled.div`
-  padding-top: 5rem;
   width: 100vw;
   background-color: ${(props) =>
     props.mode === "dark"

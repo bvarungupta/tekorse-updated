@@ -1,6 +1,5 @@
 import "./App.css";
 import NavBar from "./components/NavBar";
-import styled, { ThemeProvider } from "styled-components";
 import AboutUs from "./screens/AboutUs";
 import HeroSection from "./screens/HeroSection";
 import WhyChooseUs from "./screens/WhyChooseUs";
@@ -16,7 +15,7 @@ function App() {
       <SubNavbar />
       <NavBar />
       <HeroSection />
-      <Blog />
+      {/* <Blog /> */}
       <AboutUs />
       <Services />
       <WhyChooseUs />
