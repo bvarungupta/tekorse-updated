@@ -144,10 +144,10 @@ const NavContainer = styled.nav`
   align-items: center;
   z-index: 20;
   .logo {
+    /* background-color: red; */
     img {
       width: 170px;
     }
-
     font-weight: 700;
   }
   .nav-items {

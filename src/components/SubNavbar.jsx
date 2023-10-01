@@ -42,7 +42,7 @@ const SubNavbar = () => {
         </div>
         <div className="phone">
           <FiPhone className="icon" />
-          <p>+91 9032201605 , +91 9848811239</p>
+          <p>+91 7569959211</p>
         </div>
       </div>
     </SubNavbarContainer>
