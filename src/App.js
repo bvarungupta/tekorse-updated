@@ -15,7 +15,7 @@ function App() {
       <SubNavbar />
       <NavBar />
       <HeroSection />
-      {/* <Blog /> */}
+      <Blog />
       <AboutUs />
       <Services />
       <WhyChooseUs />

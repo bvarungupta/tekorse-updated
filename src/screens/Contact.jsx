@@ -23,16 +23,23 @@ const Contact = () => {
           </div>
         </div>
         <div className="right">
-          <div className="form">
+          <form
+            action="https://formsubmit.co/81033dd815761ed0efa3d561a213580c"
+            method="POST"
+            className="form"
+          >
+            <input type="hidden" name="_template" value="table" />
             <div className="name">
-              <input type="text" placeholder="First Name" />
-              <input type="text" placeholder="Last Name" />
+              <input type="text" name="First Name" placeholder="First Name" />
+              <input type="text" name="Last Name" placeholder="Last Name" />
             </div>
             <input type="email" placeholder="Email" />
             <input type="number" placeholder="+91 Phone Number" />
             <textarea name="" id="" cols="30" rows="10" placeholder="Message" />
-          </div>
-          <button className="submit-btn">Submit</button>
+            <button type="submit" className="submit-btn">
+              Submit
+            </button>
+          </form>
         </div>
       </div>
       <div className="contact-footer">
