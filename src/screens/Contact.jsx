@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import logo from "../assets/transparent_logo.svg";
+import logo from "../assets/main_logo.png";
 import { BiLogoLinkedin, BiLogoInstagramAlt } from "react-icons/bi";
 import { RiTwitterXFill } from "react-icons/ri";
 import { darkModeColors, lightModeColors } from "../styles/colors";
@@ -33,9 +33,19 @@ const Contact = () => {
               <input type="text" name="First Name" placeholder="First Name" />
               <input type="text" name="Last Name" placeholder="Last Name" />
             </div>
-            <input type="email" placeholder="Email" />
-            <input type="number" placeholder="+91 Phone Number" />
-            <textarea name="" id="" cols="30" rows="10" placeholder="Message" />
+            <input type="email" name="Email" placeholder="Email" />
+            <input
+              type="number"
+              name="Phone Number"
+              placeholder="+91 Phone Number"
+            />
+            <textarea
+              name="Message"
+              id=""
+              cols="30"
+              rows="10"
+              placeholder="Message"
+            />
             <button type="submit" className="submit-btn">
               Submit
             </button>

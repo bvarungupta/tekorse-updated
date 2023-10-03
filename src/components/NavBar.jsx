@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import logo from "../assets/transparent_logo.svg";
+import logo from "../assets/main_logo.png";
 import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
 import "../styles/btnStyles.css";
 import { darkModeColors, lightModeColors } from "../styles/colors";
@@ -144,7 +144,6 @@ const NavContainer = styled.nav`
   align-items: center;
   z-index: 20;
   .logo {
-    /* background-color: red; */
     img {
       width: 170px;
     }

@@ -1,11 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import StatsCard from "../components/StatsCard";
-import {
-  statsData,
-  darkmodeDonuts,
-  lightmodeDonuts,
-} from "../utils/StatsCardData";
+import { darkmodeDonuts, lightmodeDonuts } from "../utils/StatsCardData";
 import { darkModeColors, lightModeColors } from "../styles/colors";
 import { useStateProvider } from "../context/StateProvider";
 
@@ -42,6 +38,7 @@ const WhyChooseUsContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 5rem;
   .container {
     height: 90%;
     width: 90%;
