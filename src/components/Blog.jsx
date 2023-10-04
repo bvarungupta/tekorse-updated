@@ -39,8 +39,8 @@ const Blog = () => {
             Picture a dynamic blend of tech wizards, creative minds, and data
             virtuosos, all under one roof, crafting extraordinary digital
             experiences...
-            <Link to="/blog">
-              React more <BsArrowUpRightSquare />
+            <Link className="read-more" to="/blog">
+              Read more <BsArrowUpRightSquare />
             </Link>
           </p>
         </div>
@@ -48,7 +48,6 @@ const Blog = () => {
     </BlogContainer>
   );
 };
-
 export default Blog;
 
 const BlogContainer = styled.div`
@@ -66,7 +65,6 @@ const BlogContainer = styled.div`
   gap: 2.5rem;
   .blog-header {
     width: 80%;
-    /* padding: 0 10rem; */
     h1 {
       color: ${(props) =>
         props.mode === "dark" ? darkModeColors.accent : lightModeColors.accent};
@@ -79,7 +77,6 @@ const BlogContainer = styled.div`
       color: ${(props) =>
         props.mode === "dark" ? darkModeColors.text : lightModeColors.text};
       width: 50%;
-      font-size: small;
     }
     display: flex;
     justify-content: space-between;
@@ -119,12 +116,25 @@ const BlogContainer = styled.div`
           props.mode === "dark" ? darkModeColors.text : lightModeColors.text};
       }
       p {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
         .heading {
           font-weight: 700;
         }
         color: ${(props) =>
           props.mode === "dark" ? darkModeColors.text : lightModeColors.text};
-        font-size: smaller;
+        .read-more {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-weight: 600;
+          color: ${(props) =>
+            props.mode === "dark"
+              ? darkModeColors.primary
+              : lightModeColors.primary};
+        }
       }
     }
   }
