@@ -49,12 +49,6 @@ const NavBar = () => {
         <button className="letsTalk">
           <a href="#contact">Let's Talk</a>
         </button>
-        {/* <DarkModeToggle
-          className="theme"
-          onChange={toggleDarkMode}
-          checked={darkMode}
-          size={55}
-        /> */}
         {darkMode ? (
           <MdDarkMode className="theme hidden" onClick={toggleDarkMode} />
         ) : (

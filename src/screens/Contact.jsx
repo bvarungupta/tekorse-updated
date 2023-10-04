@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import logo from "../assets/main_logo.png";
 import { BiLogoLinkedin, BiLogoInstagramAlt } from "react-icons/bi";
@@ -8,8 +8,6 @@ import { useStateProvider } from "../context/StateProvider";
 
 const Contact = () => {
   const [{ dark_mode }] = useStateProvider();
-
-  const [phoneNumber, setPhoneNumber] = useState("");
 
   return (
     <ContactContainer mode={dark_mode} id="contact">
@@ -37,15 +35,10 @@ const Contact = () => {
             </div>
             <input type="email" name="Email" placeholder="Email" />
             <input
-              onChange={(e) => {
-                setPhoneNumber(e.target.value);
-              }}
-              value={phoneNumber}
               type="number"
               name="Phone Number"
               placeholder="+91 Phone Number"
             />
-            {console.log(phoneNumber)}
             <textarea
               name="Message"
               id=""
@@ -114,7 +107,6 @@ export default Contact;
 
 const ContactContainer = styled.div`
   width: 100vw;
-  /* height: 100vh; */
   background: ${(props) =>
     props.mode === "dark"
       ? darkModeColors.background
