@@ -166,6 +166,8 @@ const ContactContainer = styled.div`
         }
         input,
         textarea {
+          color: ${(props) =>
+            props.mode === "dark" ? darkModeColors.text : lightModeColors.text};
           padding: 1rem 1rem;
           border-radius: 5px;
           background-color: ${(props) =>

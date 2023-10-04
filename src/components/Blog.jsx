@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { useStateProvider } from "../context/StateProvider";
 import { darkModeColors, lightModeColors } from "../styles/colors";
 import { BsArrowUpRightSquare } from "react-icons/bs";
@@ -38,9 +39,9 @@ const Blog = () => {
             Picture a dynamic blend of tech wizards, creative minds, and data
             virtuosos, all under one roof, crafting extraordinary digital
             experiences...
-            <a href="#blog" target="_blank">
-              read more <BsArrowUpRightSquare />
-            </a>
+            <Link to="/blog">
+              React more <BsArrowUpRightSquare />
+            </Link>
           </p>
         </div>
       </div>

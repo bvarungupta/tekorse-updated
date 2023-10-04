@@ -7,7 +7,7 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import Services from "./screens/Services";
 import Contact from "./screens/Contact";
 import SubNavbar from "./components/SubNavbar";
-import Blog from "./screens/Blog";
+import Blog from "./components/Blog";
 
 function App() {
   return (
