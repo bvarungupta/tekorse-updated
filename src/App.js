@@ -8,10 +8,12 @@ import Services from "./screens/Services";
 import Contact from "./screens/Contact";
 import SubNavbar from "./components/SubNavbar";
 import Blog from "./components/Blog";
+import WhatsappLogo from "./components/WhatsappLogo";
 
 function App() {
   return (
     <ParallaxProvider>
+      <WhatsappLogo />
       <SubNavbar />
       <NavBar />
       <HeroSection />
