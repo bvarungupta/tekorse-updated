@@ -5,7 +5,7 @@
   "author": {
     "name": "Sandeep Guttula & Bathula Varun Gupta"
   },
-  "social":{
+  "social": {
     "Sandeep Guttula": "https://www.linkedin.com/in/sandeep-guttula/",
     "Bathula Varun Gupta": "https://www.linkedin.com/in/bvarungupta/"
   },
@@ -47,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
   }
 }
