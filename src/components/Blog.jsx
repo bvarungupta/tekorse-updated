@@ -74,6 +74,7 @@ const BlogContainer = styled.div`
       letter-spacing: 2.85px;
     }
     p {
+      font-weight:600;
       color: ${(props) =>
         props.mode === "dark" ? darkModeColors.text : lightModeColors.text};
       width: 50%;
